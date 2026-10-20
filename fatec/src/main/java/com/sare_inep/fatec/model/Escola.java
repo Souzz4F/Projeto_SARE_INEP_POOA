@@ -12,10 +12,11 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "escolas")
 public class Escola {
-    
+
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
     private Long codigoEscola;
     private String nomeEscola;
     private String uf;
@@ -23,6 +24,7 @@ public class Escola {
     private String dependenciaAdministrativa;
     private String localizacao;
     private String situacaoFuncionamento;
+    private String restricaoAtendimento;
     private Boolean possuiInternet;
 
     public Escola() {
@@ -98,6 +100,14 @@ public class Escola {
 
     public void setPossuiInternet(Boolean possuiInternet) {
         this.possuiInternet = possuiInternet;
+    }
+
+    public String getRestricaoAtendimento() {
+    return restricaoAtendimento;
+    }
+
+    public void setRestricaoAtendimento(String restricaoAtendimento) {
+        this.restricaoAtendimento = restricaoAtendimento;
     }
 }
 

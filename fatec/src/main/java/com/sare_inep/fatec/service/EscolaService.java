@@ -21,6 +21,10 @@ public class EscolaService {
         return escolaRepository.findAll();
     }
 
+    public List<Escola> buscarPorUf(String uf) {
+        return escolaRepository.findByUfIgnoreCase(uf);
+    }
+
     public Optional<Escola> buscarPorId(Long id) {
         return escolaRepository.findById(id);
     }
