@@ -28,7 +28,25 @@ public class EscolaController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Escola>> listarTodas() {
+    public ResponseEntity<List<Escola>> listarTodas(
+            @RequestParam(required = false) String municipio,
+            @RequestParam(required = false) String uf,
+            @RequestParam(required = false) String localizacao,
+            @RequestParam(required = false) String dependencia) {
+
+        if (municipio != null || uf != null
+                || localizacao != null || dependencia != null) {
+
+            return ResponseEntity.ok(
+                    escolaService.filtrarEscolas(
+                            municipio,
+                            uf,
+                            localizacao,
+                            dependencia
+                    )
+            );
+        }
+
         return ResponseEntity.ok(escolaService.listarTodas());
     }
 
@@ -92,3 +110,4 @@ public class EscolaController {
         );
     }
 }
+
